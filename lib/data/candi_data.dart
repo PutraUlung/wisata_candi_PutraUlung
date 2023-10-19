@@ -1,4 +1,4 @@
-import 'package:wisata_candi/models/candi.dart';
+import '../models/candi.dart';
 
 var candiList = [
   Candi(
@@ -24,7 +24,7 @@ var candiList = [
         'Candi Mendut adalah candi Buddha yang terletak di Desa Mendut, Kabupaten Magelang, Jawa Tengah, sekitar 3 kilometer dari Candi Borobudur. Dibangun pada masa pemerintahan Raja Indra dari dinasti Syailendra, Candi Mendut dikaitkan dengan prasasti Karangtengah tahun 824 Masehi, yang mengaitkannya dengan istilah "wenuwana" atau hutan bambu. Candi ini dibangun dengan batu bata dan lapisan batu alam, berdiri teguh di atas basement tinggi dengan pintu masuk menghadap barat-daya. Bangunan ini memiliki lorong mengelilingi tubuhnya, atap tiga tingkat, dan dihiasi dengan 48 stupa kecil di bagian puncaknya.',
     built: 'Abad ke-9',
     type: 'Candi Buddha',
-    imageAsset: 'images/mendut.jpeg',
+    imageAsset: 'images/mendut.jpeg'  ,
     imageUrls: [
       'https://media-cdn.tripadvisor.com/media/photo-o/08/8d/bd/dc/photo1jpg.jpg',
       'https://media-cdn.tripadvisor.com/media/photo-o/08/30/84/fe/detail.jpg',
