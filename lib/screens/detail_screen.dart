@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 
@@ -8,7 +9,8 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: [
           //DetailHeader
           Stack(
@@ -48,6 +50,7 @@ class DetailScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //info atas (nama candi dan tombol favorit
                 Row(
@@ -91,6 +94,9 @@ class DetailScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold)),),
                   Text(': ${candi.Type}',),
                 ],),
+                SizedBox(height: 16,),
+                Divider(color: Colors.deepPurple.shade100,),
+                SizedBox(height: 16,),
                 ]
     )
                 //info bawah (deskripsi)
@@ -111,9 +117,66 @@ class DetailScreen extends StatelessWidget {
                     ),
                   )
 
-                )
+                ),
+
+          //Detail Gallery
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(color: Colors.deepPurple.shade100,),
+                Text('Galeri', style: TextStyle(
+                  fontSize: 16,fontWeight: FontWeight.bold,
+                )),
+                SizedBox(height: 10,),
+                SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                      itemCount: candi.ImageUrls.length,
+                      itemBuilder: (context, index){
+                        return Padding(padding: EdgeInsets.only(left: 8),
+                      child: GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.deepPurple.shade100,
+                              width: 2,
+                            )
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: CachedNetworkImage(
+                              imageUrl: candi.imageUrls[index],
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Container(
+                              width: 120,
+                              height: 120,
+                              color: Colors.deepPurple[50],
+                            ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
+                            ),
+                            ),
+                          )
+                          ),
+                        );
+                      },
+                  ),
+                ),
+                SizedBox(height: 4,),
+                Text(''),
               ],
+            ),
+          )
+        ],
       )
+    ),
     );
-  }
+    }
+
 }
